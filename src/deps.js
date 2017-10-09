@@ -2,24 +2,7 @@ const WINDOW   = window;
 const DOCUMENT = document;
 const HEADER   = DOCUMENT.head;
 
-export let POLYFILLS = {
-    promise: {
-        state: 1,
-        url  : 'https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.min.js',
-
-        condition() {
-            return WINDOW.Promise;
-        }
-    },
-    fetch  : {
-        state: 1,
-        url  : 'https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js',
-
-        condition() {
-            return WINDOW.fetch;
-        }
-    }
-};
+export let POLYFILLS = {};
 
 export const isExist = $pf => $pf && $pf.state;
 
@@ -72,4 +55,13 @@ export const config = ( name, config ) => {
             ...name
         }
     }
+
+    for ( let $p of POLYFILLS ) {
+        if ( typeof $p.state === 'undefined' ) {
+            $p.state = 1;
+        }
+    }
+
 };
+
+

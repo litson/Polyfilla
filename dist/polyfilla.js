@@ -27,24 +27,7 @@ var WINDOW = window;
 var DOCUMENT = document;
 var HEADER = DOCUMENT.head;
 
-var POLYFILLS = {
-    promise: {
-        state: 1,
-        url: 'https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.min.js',
-
-        condition: function condition() {
-            return WINDOW.Promise;
-        }
-    },
-    fetch: {
-        state: 1,
-        url: 'https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js',
-
-        condition: function condition() {
-            return WINDOW.fetch;
-        }
-    }
-};
+var POLYFILLS = {};
 
 var isExist = function isExist($pf) {
     return $pf && $pf.state;
@@ -91,6 +74,33 @@ var config = function config(name, _config) {
         POLYFILLS[name] = _extends({}, oldConf, _config);
     } else {
         POLYFILLS = _extends({}, POLYFILLS, name);
+    }
+
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+        for (var _iterator = POLYFILLS[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var $p = _step.value;
+
+            if (typeof $p.state === 'undefined') {
+                $p.state = 1;
+            }
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
+        }
     }
 };
 
