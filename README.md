@@ -21,7 +21,8 @@
         {
             promise: {
                 url: 'https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.min.js',
-                condition() {
+                // 若当期浏览器支持Promise，则不会下载polyfill
+                condition() {
                     return window.Promise
                 }
             },
