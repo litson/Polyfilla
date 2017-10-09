@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Polyfilla</title>
+</head>
+<body>
+<button onclick="_test()">Click me to test again.</button>
+<script src="polyfilla.js"></script>
+<script>
+
+    function _test() {
+        Polyfilla( [
+            'promise',
+            'noop2',
+            'fetch',
+            'noop'
+        ], function () {
+            console.log( 'done' );
+        } );
+    }
+
+    _test();
+
+</script>
+</body>
+</html>
